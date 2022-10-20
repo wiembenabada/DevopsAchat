@@ -12,7 +12,8 @@ import java.util.List;
 @Api(tags = "Gestion des categories Produit")
 @RequestMapping("/categorieProduit")
 public class CategorieProduitController {
-// hello test 
+// hello test
+	//hello test2
 	@Autowired
 	ICategorieProduitService categorieProduitService;
 	
