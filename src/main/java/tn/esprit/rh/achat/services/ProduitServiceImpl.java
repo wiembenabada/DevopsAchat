@@ -41,15 +41,15 @@ public class ProduitServiceImpl implements IProduitService {
 	
 
 	@Override
-	public void deleteProduit(Long produitId) {
-		produitRepository.deleteById(produitId);
-	}
-
-	@Override
 	public Produit updateProduit(Produit p) {
 		return produitRepository.save(p);
 	}
 
+	@Override
+	public void deleteProduit(Long produitId) {
+		produitRepository.deleteById(produitId);
+	}
+	
 	@Override
 	public Produit retrieveProduit(Long produitId) {
 		Produit produit = produitRepository.findById(produitId).orElse(null);
