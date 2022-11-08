@@ -1,0 +1,5 @@
+FROM openjdk:8
+ADD target/SpringProject-1.0.jar SpringProject-1.0.jar
+EXPOSE 8086
+ENTRYPOINT ["java","-jar","SpringProject-1.0.jar"]
+

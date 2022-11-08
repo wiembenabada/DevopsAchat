@@ -42,6 +42,7 @@ tn\esprit\rh\achat\entities\Facture.class
 tn\esprit\rh\achat\entities\Reglement.class
 tn\esprit\rh\achat\entities\Operateur.class
 tn\esprit\rh\achat\entities\Produit$ProduitBuilder.class
+tn\esprit\rh\achat\entities\Operateur$OperateurBuilder.class
 tn\esprit\rh\achat\entities\DetailFacture.class
 tn\esprit\rh\achat\util\SpringFoxSwaggerConfig.class
 tn\esprit\rh\achat\entities\DetailFournisseur.class
