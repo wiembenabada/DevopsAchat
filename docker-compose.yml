@@ -1,0 +1,25 @@
+version : "3.7"
+services :
+ mysqldb:
+  image: some-mysql
+  restart: unless-stopped
+  ports: 
+   - 3307:3306
+  environment:
+   - MYSQL_DATABASE=root
+   - MYSQL_ROOT_PASSWORD=root
+  volumes:
+   - db:/var/lib/some-mysql
+ app:
+  depends_on:
+   - mysqldb
+  image: achat
+  build: ./achat
+  restart: on-failure
+  ports: 
+   - 8000-8999:8088
+  volumes:
+   - .m2:/root/.m2
+ 
+   
+  
