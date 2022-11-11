@@ -31,6 +31,16 @@ pipeline{
                 }
             }
         }
+    stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn -f'pom.xml' package -DskipTests=false"
+                }
+                echo ":$BUILD_NUMBER"
+            }
+        }
+    
+    
     
   }
 }
