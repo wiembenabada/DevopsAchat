@@ -16,7 +16,7 @@ import tn.esprit.rh.achat.services.ICategorieProduitService;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(classes = AchatApplication.class)
-class OperateursServicesImplTest {
+class CategorieProduitServicesImplTest {
 
 	
 	@Autowired
