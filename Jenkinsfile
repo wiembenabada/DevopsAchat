@@ -6,6 +6,9 @@ pipeline{
         NEXUS_URL = "192.168.33.10:8081"
         NEXUS_REPOSITORY = "maven-releases"
         NEXUS_CREDENTIAL_ID = "nexus"
+        registry = "siwarguermassi/devopsrepo" 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
     }
   
   stages{
@@ -81,6 +84,30 @@ pipeline{
                 }
             }
      }
+       stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+        stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+            }
+        }
+    
+    
+    
     
     
     
