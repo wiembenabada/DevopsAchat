@@ -1,4 +1,5 @@
 FROM openjdk:11
-EXPOSE 8080
-ADD target/devops-integration.jar devops-integration.jar
-ENTRYPOINT ["java","-jar","/devops-integration.jar"]
+COPY ./target/achat-1.0.jar achat-1.0.jar
+EXPOSE 8086
+ENTRYPOINT ["java","-jar","/achat-1.0.jar"]
+
