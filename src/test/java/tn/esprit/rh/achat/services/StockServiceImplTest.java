@@ -1,93 +1,84 @@
-package tn.esprit.rh.achat.services;
+package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
-
-import tn.esprit.rh.achat.repositories.StockRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import tn.esprit.rh.achat.entities.Stock;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Optional;
+import java.util.List;
+
+import com.esprit.examen.entities.Stock;
+import com.esprit.examen.services.IStockService;
+
 
 @RunWith(SpringRunner.class)
-@Slf4j
-@ExtendWith(MockitoExtension.class)
-
-@MockitoSettings(strictness = Strictness.LENIENT)
-
+@SpringBootTest
 public class StockServiceImplTest {
-    @Mock
-    StockRepository sto;
-	@InjectMocks
-	StockServiceImpl stockService;
-	Stock s = new Stock("stock test",10,100);
-
+	
+	@Autowired
+	IStockService stockService;
+	
+	
 	@Test
-	public void testAddStock() {
-
-		Stock s = new Stock("stock test",10,100);
-        Mockito.when(sto.save(ArgumentMatchers.any(Stock.class))).thenReturn(s);
+	public void testAddStock(){
+		List<Stock> stocks = stockService.retrieveAllStocks();
+		int expected = stocks.size();
+		Stock s = new Stock();
+		s.setLibelleStock("test");
+		s.setQte(25);
+		s.setQte(300);
 		Stock savedStock= stockService.addStock(s);
-
+		assertEquals(expected+1, stockService.retrieveAllStocks().size());
 		assertNotNull(savedStock.getLibelleStock());
-		assertNotNull(savedStock.getIdStock());
-		assertSame(10, savedStock.getQte());
-		assertTrue(savedStock.getQteMin()>0);
-
 		stockService.deleteStock(savedStock.getIdStock());
-
+		
 	}
-
-	@Test
-	public void testDeleteStock() {
-		Stock s = new Stock("stock test",30,60);
-		s.setIdStock(Long.valueOf(100));
-		stockService.addStock(s);
-		stockService.deleteStock(s.getIdStock());
-		assertNull(stockService.retrieveStock(s.getIdStock()));
-	}
-
+	
+	
 	@Test
 	public void testRetrieveStock() {
-		Mockito.when(sto.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-		Stock s1 = stockService.retrieveStock(s.getIdStock());
-		Assertions.assertNotNull(s1);
-	}
-
-
+		Stock s = new Stock();
+		s.setLibelleStock("test");
+		s.setQte(600);
+		s.setQteMin(30);
+		Stock savedStock= stockService.addStock(s);
+		Stock getStock= stockService.retrieveStock(savedStock.getIdStock());
+		assertNotNull(savedStock.getLibelleStock());
+		assertNotNull(savedStock.getQte());
+		assertNotNull(savedStock.getQteMin());
+		assertEquals(savedStock.getIdStock(),getStock.getIdStock());
+		
+		stockService.deleteStock(savedStock.getIdStock());
+		}
+	
 	@Test
-	public void testAddstock() {
-		Mockito.when(sto.save(s)).thenReturn(s);
-		Stock s1 = stockService.addStock(s);
-		Assertions.assertNotNull(s1);
-
-	}
-
+	public void testUpdateStock() {
+		Stock s = new Stock();
+		s.setLibelleStock("test");
+		s.setQte(2055);
+		s.setQteMin(20);
+		Stock savedStock= stockService.addStock(s);
+		savedStock.setLibelleStock("rania");;
+		stockService.updateStock(savedStock);
+		assertEquals(s.getLibelleStock(),savedStock.getLibelleStock());
+		stockService.deleteStock(savedStock.getIdStock());
+		}
+	
 	@Test
-	public void testUpdatestock() {
-		s.setQteMin(5);
-		Mockito.when(sto.save(s)).thenReturn(s);
-		Stock s1 = stockService.updateStock(s);
-		Assertions.assertEquals(s,s1);
-
-	}
-
-	@Test
-	public void testDeletestock() {
-		stockService.deleteStock(s.getIdStock());
-		Mockito.verify(sto, Mockito.times(1)).deleteById(s.getIdStock());
+	public void testDeleteStock() {
+		Stock s = new Stock();
+		s.setLibelleStock("test");
+		s.setQte(20668);
+		s.setQteMin(30);
+		Stock savedService= stockService.addStock(s);
+		stockService.deleteStock(savedService.getIdStock());
+		assertNotNull(savedService.getIdStock());
+		
 	}
 
 }
