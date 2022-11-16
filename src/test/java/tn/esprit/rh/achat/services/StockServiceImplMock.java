@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,9 +23,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.StockRepository;
-import com.esprit.examen.services.StockServiceImpl;
+import tn.esprit.rh.achat.entities.Stock;
+import tn.esprit.rh.achat.repositories.StockRepository;
+import tn.esprit.rh.achat.services.StockServiceImpl;
 
 
 
