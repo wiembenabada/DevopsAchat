@@ -19,7 +19,7 @@ import tn.esprit.rh.achat.services.IStockService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
-	
+/*	
 	@Autowired
 	IStockService stockService;
 	
@@ -81,4 +81,4 @@ public class StockServiceImplTest {
 		
 	}
 
-}
+*/}
