@@ -4,26 +4,13 @@ services :
   image: mysql2
   restart: unless-stopped
   ports: 
-   - 3306
+   - 3306:3307
   environment:
    - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=achat
-   - MYSQL_USER=ghofran
+   - MYSQL_USER=root
    - MYSQL_PASSWORD=root
   volumes:
-   - db1:/var/lib/mysql2
- mysql3:
-  image: mysql3
-  restart: unless-stopped
-  ports: 
-   - 3307
-  environment:
-   - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=achatTest
-   - MYSQL_USER=ghofran
-   - MYSQL_PASSWORD=root
-  volumes:
-   - db2:/var/lib/mysql3
+   - db:/var/lib/mysql2
  app:
   depends_on:
    - mysql2
@@ -33,20 +20,20 @@ services :
    dockerfile: "Dockerfile"
   restart: on-failure
   ports: 
-   - 8000-8999:8088
+   - 8000-8999:8087
   volumes:
    - .m2:/root/.m2
   environment:
    SPRING_APPLICATION_JSON: '{
     "spring.datasource.url"  : "jdbc:mysql://192.168.33.10:3306/achat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-    "spring.datasource.username" : "ghofran",
+    "spring.datasource.username" : "root",
     "spring.datasource.password" : "root",
     "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
     "spring.jpa.hibernate.ddl-auto" : "update"
        }'
  test:
   depends_on:
-   - mysql3
+   - mysql2
   image: ghofran24/achatProject
   profiles: ["tester"]
   build:
@@ -59,12 +46,11 @@ services :
    - .m2:/root/.m2
   environment:
    SPRING_APPLICATION_JSON: '{
-    "spring.datasource.url"  : "jdbc:mysql://192.168.33.10:3307/achatTest?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-    "spring.datasource.username" : "ghofran",
+    "spring.datasource.url"  : "jdbc:mysql://192.168.33.10:3306/achatTest?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+    "spring.datasource.username" : "root",
     "spring.datasource.password" : "root",
     "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
     "spring.jpa.hibernate.ddl-auto" : "update"
        }'
 volumes:
- db1:
- db2:
+ db:
