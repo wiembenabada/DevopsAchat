@@ -46,7 +46,4 @@ public class StockServiceTest {
         Assertions.assertNull(StockServiceImpl.retrieveStock(s.getIdStock()));
     }*/
 }
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
+
