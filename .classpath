@@ -51,16 +51,5 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/user/.m2/repository/org/springframework/boot/spring-boot-test/2.5.3/spring-boot-test-2.5.3.jar" sourcepath="C:/Users/user/.m2/repository/org/springframework/boot/spring-boot-test/2.5.3/spring-boot-test-2.5.3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/user/.m2/repository/org/springframework/boot/spring-boot-test/2.5.3/spring-boot-test-2.5.3-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="org.springframework.boot"/>
-			<attribute name="maven.artifactId" value="spring-boot-test"/>
-			<attribute name="maven.version" value="2.5.3"/>
-			<attribute name="maven.scope" value="test"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
