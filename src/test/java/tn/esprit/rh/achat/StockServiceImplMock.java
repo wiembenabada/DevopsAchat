@@ -2,7 +2,7 @@ package tn.esprit.rh.achat.services;
 
 import static org.junit.Assert.*;
 
-import tn.esprit.rh.achat.services.repositories.StockRepository;
+import tn.esprit.rh.achat.repositories.StockRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
