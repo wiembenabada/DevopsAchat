@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.services.IStockService;
+import tn.esprit.rh.achat.entities.Stock;
+import tn.esprit.rh.achat.services.IStockService;
 
 
 @RunWith(SpringRunner.class)
