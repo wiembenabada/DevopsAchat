@@ -43,4 +43,10 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 		return categorieProduit;
 	}
 
+	/*@Override
+	public CategorieProduit findByCategorieProduit(String cat) {
+		CategorieProduit categorieProduit = categorieProduitRepository.findByCategorieProduit(cat);
+		return categorieProduit;
+	}*/
+
 }
