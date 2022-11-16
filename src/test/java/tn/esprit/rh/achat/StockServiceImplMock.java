@@ -1,40 +1,34 @@
 package tn.esprit.rh.achat.services;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import static org.junit.Assert.*;
 
+import tn.esprit.rh.achat.services.repositories.StockRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.mockito.junit.jupiter.MockitoSettings;
 import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.repositories.StockRepository;
-import tn.esprit.rh.achat.services.StockServiceImpl;
 
 
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class StockServiceImplMock {
-	
-	
-	 @Mock
+@Slf4j
+@ExtendWith(MockitoExtension.class)
+
+@MockitoSettings(strictness = Strictness.LENIENT)
+
+public class StockServiceImplTest {
+    @Mock
     StockRepository sto;
 	@InjectMocks
 	StockServiceImpl stockService;
