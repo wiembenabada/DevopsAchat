@@ -27,7 +27,7 @@ import java.util.Optional;
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 
-public class StockServiceImplMockTest {
+public class StockServiceImplMock {
     @Mock
     StockRepository sto;
 	@InjectMocks
