@@ -16,7 +16,7 @@ class OperateursServicesImplTest {
 
 		@Autowired
 	    private IOperateurService OperateurServiceImp;
-		/*
+		
 		 @Test 
 		@Order(1)
 		public void testAddOperateur() {
@@ -41,14 +41,6 @@ class OperateursServicesImplTest {
 			
 		 @Test 
 		 @Order(4)
-		public void testDeleteOperateur() {
-		  Operateur p =  OperateurServiceImp.retrieveOperateur((long) 5);
-			 OperateurServiceImp.deleteOperateur(p.getIdOperateur());
-			 Assertions.assertNull(p);
-			}
-		 
-		 @Test 
-		 @Order(4)
 		public void testRetrieveOperateur() {
 				Operateur op =Operateur.builder().nom("test").prenom("qsdfg").build();
 				OperateurServiceImp.addOperateur(op);
@@ -56,6 +48,6 @@ class OperateursServicesImplTest {
 				Assertions.assertNotNull(p);
 				
 }
-*/
+
 	}
 
