@@ -91,6 +91,8 @@ pipeline{
                 }
             }
      }
+      
+      
     stage('docker compose') {
 
             steps {
@@ -98,9 +100,14 @@ pipeline{
                 sh "docker-compose up -d"
 
             }
+    }
 
    
+      
+      
+      
+      
      
   }
 }
-  }
+  
