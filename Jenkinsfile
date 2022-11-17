@@ -29,7 +29,14 @@ stage('Maven SonarQube'){
   -Dsonar.host.url=http://192.168.33.10:9000 \
   -Dsonar.login=55365ff940e3410e5d1517b15889818bc28ef0ef'
             }}
-stage('build'){
+stage ('Mockito/Junit') {
+             steps {
+
+            sh "mvn test"
+                echo """les tests sont pris en charge"""
+                }
+            }
+stage('package'){
       steps {
             sh 'mvn package -Dmaven.test.skip=true'
         }
