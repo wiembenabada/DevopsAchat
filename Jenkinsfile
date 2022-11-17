@@ -14,15 +14,12 @@ pipeline{
   stages{
     
     stages {
-        stage('Checkout GIT') {
+       stage('GIT'){
             steps {
-
-                echo 'Pulling...';
-                git branch: 'main',
-                url : 'https://github.com/ferielhakim/tpachat.git',
-
+                echo  'getting project from git';
+                 git branch :'siwarguermassi' , url : 'https://github.com/wiembenabada/DevopsAchat.git'
             }
-
+            
         }
         stage("Maven Clean") {
             steps {
