@@ -12,12 +12,7 @@
 	<artifactId>achat</artifactId>
 	<version>1.0</version>
 	<name>achat</name>
-	<distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <url>http://http://192.168.56.9/:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
+	
 
 	<description>Projet pour le module DevOps</description>
 	<properties>
@@ -93,5 +88,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <url>http://http://192.168.56.9:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
