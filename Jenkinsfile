@@ -12,6 +12,18 @@ pipeline{
     }
   
   stages{
+    
+    stages {
+        stage('Checkout GIT') {
+            steps {
+
+                echo 'Pulling...';
+                git branch: 'main',
+                url : 'https://github.com/ferielhakim/tpachat.git',
+
+            }
+
+        }
         stage("Maven Clean") {
             steps {
                 script {
