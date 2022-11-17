@@ -52,7 +52,12 @@ pipeline{
                 echo ":$BUILD_NUMBER"
             }
         }
-      
+      Stage ( 'unit test') { 
+    Steps { 
+           sh 'mvn test'
+}
+
+}
      stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
