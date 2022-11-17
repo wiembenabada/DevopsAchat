@@ -13,7 +13,7 @@ import tn.esprit.rh.achat.AchatApplication;
 import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
-@ActiveProfiles(profiles = "tester")
+@ActiveProfiles("tester")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(classes = AchatApplication.class)
 class CategorieProduitServicesImplTestWithoutMockito {

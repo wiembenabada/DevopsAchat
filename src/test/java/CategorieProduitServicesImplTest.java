@@ -31,7 +31,7 @@ import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.services.CategorieProduitServiceImpl;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
-@ActiveProfiles(profiles = "tester")
+@ActiveProfiles("tester")
 @SpringBootTest(classes = AchatApplication.class)
 @ExtendWith(MockitoExtension.class)
 class CategorieProduitServicesImplTest {
