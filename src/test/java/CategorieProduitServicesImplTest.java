@@ -19,7 +19,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 
 import tn.esprit.rh.achat.AchatApplication;
 import tn.esprit.rh.achat.entities.CategorieProduit;
@@ -27,13 +31,13 @@ import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.services.CategorieProduitServiceImpl;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
-
+@ActiveProfiles(profiles = "tester")
 @SpringBootTest(classes = AchatApplication.class)
 @ExtendWith(MockitoExtension.class)
 class CategorieProduitServicesImplTest {
 
 
-	
+
 	@MockBean
 	private CategorieProduitRepository CategorieRepository;
 	
