@@ -14,7 +14,7 @@ services :
  app:
   depends_on:
    - mysql2
-  image: ghofran24/achatProject
+  image: ghofran24/achat
   build:
    context: "./"
    dockerfile: "Dockerfile"
@@ -34,8 +34,7 @@ services :
  test:
   depends_on:
    - mysql2
-  image: ghofran24/achatProject
-  profiles: ["tester"]
+  image: ghofran24/achat
   build:
    context: "./"
    dockerfile: "Dockerfile"
