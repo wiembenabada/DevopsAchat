@@ -91,4 +91,15 @@ pipeline{
 
 
     }
-}
+
+ post {
+                      success {
+                        //  mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'chaima.benammar@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'chaima.benammar@esprit.tn'
+                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'chaima.benammar@esprit.tn'
+                      }
+                      failure {
+                         // mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'chaima.benammar@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'chaima.benammar@esprit.tn'
+                            emailext body: 'Pipeline build not success', subject: 'Pipeline build', to: 'chaima.benammar@esprit.tn'
+                      }
+              }
+          }
