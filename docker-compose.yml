@@ -8,8 +8,6 @@ services:
       MYSQL_DATABASE: achatdb
     ports:
       - 3306:3306
-    networks:
-     - AppNet
 
   spring-boot:
     image: chaimabenammar/springproject
@@ -18,5 +16,3 @@ services:
       - 8089:8089
     depends_on:
       - database
-    networks:
-      - AppNet
