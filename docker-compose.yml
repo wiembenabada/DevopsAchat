@@ -1,7 +1,7 @@
 version : "3"
 services :
  mysql2:
-  image: mysql
+  image: mysql2
   restart: unless-stopped
   ports: 
    - 3306:3307
@@ -10,7 +10,7 @@ services :
    - MYSQL_USER=root
    - MYSQL_PASSWORD=root
   volumes:
-   - db:/var/lib/mysql2
+   - db:/var/lib/mysql
  app:
   depends_on:
    - mysql2
