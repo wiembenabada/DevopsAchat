@@ -35,13 +35,11 @@ pipeline{
                 }
             }
         }
-        stage("Maven test") {
-            steps {
-                script {
-                    sh "mvn -f'pom.xml' test"
-                }
-            }
-        }
+        stage('unit test'){
+                steps{
+                 sh 'mvn test'
+                 }
+             }
     
     stage("Maven Sonarqube") {
             steps {
