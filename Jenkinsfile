@@ -11,7 +11,7 @@ pipeline{
         dockerImage = '' 
     }
   
-  stages{
+  
     
     stages {
        stage('GIT'){
@@ -35,11 +35,7 @@ pipeline{
                 }
             }
         }
-        stage('unit test'){
-                steps{
-                 sh 'mvn test'
-                 }
-             }
+       
     
     stage("Maven Sonarqube") {
             steps {
@@ -56,6 +52,7 @@ pipeline{
                 echo ":$BUILD_NUMBER"
             }
         }
+      
      stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
@@ -110,4 +107,3 @@ pipeline{
      
   }
 }
-  
