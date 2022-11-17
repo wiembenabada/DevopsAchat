@@ -84,7 +84,16 @@ pipeline{
                 }
             }
      }
-       stage('Building our image') { 
+    stage('docker compose') {
+
+            steps {
+
+                sh "docker-compose up -d"
+
+            }
+
+        }
+     /*  stage('Building our image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
@@ -104,7 +113,7 @@ pipeline{
             steps { 
                 sh "docker rmi $registry:$BUILD_NUMBER" 
             }
-        }
+        }*/
     
     
     
