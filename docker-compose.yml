@@ -1,6 +1,6 @@
 version : "3"
 services :
- mysql2:
+ mysqldb:
   image: mysql2
   restart: unless-stopped
   ports: 
@@ -13,7 +13,7 @@ services :
    - db:/var/lib/mysql
  app:
   depends_on:
-   - mysql2
+   - mysqldb
   image: ghofran24/achat
   build:
    context: "./"
@@ -33,7 +33,7 @@ services :
        }'
  test:
   depends_on:
-   - mysql2
+   - mysqldb
   image: ghofran24/achat
   build:
    context: "./"
