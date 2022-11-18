@@ -1,12 +1,12 @@
 package tn.esprit.rh.achat.repositories;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Repository;
 import tn.esprit.rh.achat.entities.Facture;
 import tn.esprit.rh.achat.entities.Fournisseur;
