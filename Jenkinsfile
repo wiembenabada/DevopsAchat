@@ -36,6 +36,14 @@ pipeline{
             }
         }
        
+       stage("Maven test") {
+      steps {
+        script {
+          sh "mvn -f'pom.xml' test -Drevision=${VERSION}"
+        }
+      }
+    }
+      
     
     stage("Maven Sonarqube") {
             steps {
@@ -52,12 +60,7 @@ pipeline{
                 echo ":$BUILD_NUMBER"
             }
         }
-      Stage ( 'unit test') { 
-    Steps { 
-           sh 'mvn test'
-}
-
-}
+      
      stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
@@ -94,45 +97,44 @@ pipeline{
             }
      }
       stage('Building our image') { 
-15
-            steps { 
-16
+      steps { 
+
                 script { 
-17
+
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-18
+
                 }
-19
+
             } 
-20
+
         }
-21
+
         stage('Deploy our image') { 
-22
+
             steps { 
-23
+
                 script { 
-24
+
                     docker.withRegistry( '', registryCredential ) { 
-25
+
                         dockerImage.push() 
-26
+
                     }
-27
+
                 } 
-28
+
             }
-29
+
         } 
-30
+
         stage('Cleaning up') { 
-31
+
             steps { 
-32
+
                 sh "docker rmi $registry:$BUILD_NUMBER" 
-33
+
             }
-34
+
         } 
       
     stage('docker compose') {
@@ -145,7 +147,7 @@ pipeline{
     }
 
    
-      
+     
       
       
       
