@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class StockServiceMockTest {
+public class StockServiceImplMock {
 
     @InjectMocks
     StockServiceImpl stockService;
