@@ -96,7 +96,7 @@ pipeline{
                 }
             }
      }
-      stage('Building our image') { 
+   /*   stage('Building our image') { 
       steps { 
 
                 script { 
@@ -135,7 +135,7 @@ pipeline{
 
             }
 
-        } 
+        } */
       
     stage('docker compose') {
 
