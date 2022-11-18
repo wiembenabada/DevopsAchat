@@ -2,7 +2,10 @@ package tn.esprit.rh.achat.controllers;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.rh.achat.entities.Facture;
 import tn.esprit.rh.achat.services.IFactureService;
