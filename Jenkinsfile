@@ -9,7 +9,7 @@ pipeline{
 
             }
         }
-        stage('Maven Build') {
+        stage('Maven Clean And Compile') {
             steps {
                 echo 'maven version'
                 sh 'mvn -version'
@@ -25,65 +25,52 @@ pipeline{
                 }
             }
         }
-       /* stage("Maven Sonarqube") {
-            steps {
-                script {
-                    sh "mvn -f'pom.xml' sonar:sonar -Dsonar.login=admin -Dsonar.password=99204845"
-                }
-            }
-        }*/
-        /*stage('Quality Gate') {
-            steps {
-                timeout(time:2, unit: 'MINUTES'){
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }*/
-        stage('MVN Package'){
+      
+        stage('Artifact Construction'){
                         steps{
-                         sh 'mvn package'
+                         sh 'mvn package -Dmaven.test.skip=true'
                          }
                      }
-        stage('MVN TEST'){
+        stage('Maven TEST'){
                 steps{
                  sh 'mvn test'
                  }
              }
 
-        stage("nexus deploy"){
+        stage("Nexus Deploy"){
                 steps{
                   sh 'mvn deploy -Dmaven.test.skip=true '
 
                  }
               }
-               stage('Build docker image'){
-                                                               steps{
-                                                                   script{
-                                                                      sh 'docker build -t chaimabenammar/springproject .'
-                                                                   }
-                                                               }
-                                                           }
+        stage('Build docker image'){
+                steps{
+                     script{
+                          sh 'docker build -t chaimabenammar/springproject .'
+                    }
+                    }
+             }
 
-                                                            stage('Docker login') {
+        stage('Docker login') {
 
-                                                                                                    steps {
-                                                                                                     sh 'echo "login Docker ...."'
-                                                                              	sh 'docker login -u chaimabenammar -p adminadmin'
-                                                                                          }  }
+                steps {
+                        sh 'echo "login Docker ...."'
+                        sh 'docker login -u chaimabenammar -p adminadmin'
+                    }  }
 
 
-                        stage('Docker push') {
+        stage('Docker push') {
 
-                                         steps {
-                                              sh 'echo "Docker is pushing ...."'
-                                             	sh 'docker push chaimabenammar/springproject'
-                                                }  }
+             steps {
+             sh 'echo "Docker is pushing ...."'
+            sh 'docker push chaimabenammar/springproject'
+                }  }
 
-                                                   stage('Docker compose') {
+         stage('Docker compose') {
 
-                                        steps {
-                                             sh 'docker-compose up -d'
-                                               }  }
+                steps {
+               sh 'docker-compose up -d'
+                 }  }
 
 
 
