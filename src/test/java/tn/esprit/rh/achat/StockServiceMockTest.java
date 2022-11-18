@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
-
+import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +21,7 @@ import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class StockServiceMockTest {
 
     @InjectMocks
