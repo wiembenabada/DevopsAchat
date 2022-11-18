@@ -39,7 +39,7 @@ pipeline{
        stage("Maven test") {
       steps {
         script {
-          sh "mvn -f'pom.xml' test -Drevision=${VERSION}"
+          sh "mvn -f'pom.xml' test "
         }
       }
     }
