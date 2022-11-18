@@ -3,9 +3,6 @@ package tn.esprit.rh.achat.services;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entites.dto.FactureRequestModel;
 import tn.esprit.rh.achat.entities.*;
@@ -48,6 +45,7 @@ public class FactureServiceImpl implements IFactureService {
 		}
 		return factures;
 	}
+
 
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {

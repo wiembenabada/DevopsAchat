@@ -10,6 +10,7 @@ public interface IFactureService {
 
 	List<Facture> retrieveAllFactures();
 
+
 	List<Facture> getFacturesByFournisseur(Long idFournisseur);
 
 	Facture addFacture(FactureRequestModel f);
