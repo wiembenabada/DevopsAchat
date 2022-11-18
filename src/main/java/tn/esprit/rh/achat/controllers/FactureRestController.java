@@ -1,4 +1,4 @@
-package com.esprit.examen.controllers;
+package tn.esprit.rh.achat.controllers;
 
 import java.util.Date;
 import java.util.List;
