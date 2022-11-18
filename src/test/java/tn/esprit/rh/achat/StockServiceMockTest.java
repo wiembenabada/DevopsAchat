@@ -18,10 +18,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
+import org.springframework.boot.test.context.SpringBootTest;
 
-
+@SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-@ExtendWith(MockitoExtension.class)
 public class StockServiceMockTest {
 
     @InjectMocks
