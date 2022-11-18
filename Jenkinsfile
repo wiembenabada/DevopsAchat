@@ -11,7 +11,16 @@ pipeline{
         dockerImage = '' 
     }
   
-  stages{
+  
+    
+    stages {
+       stage('GIT'){
+            steps {
+                echo  'getting project from git';
+                 git branch :'siwarguermassi' , url : 'https://github.com/wiembenabada/DevopsAchat.git'
+            }
+            
+        }
         stage("Maven Clean") {
             steps {
                 script {
@@ -26,13 +35,15 @@ pipeline{
                 }
             }
         }
-        stage("Maven test") {
-            steps {
-                script {
-                    sh "mvn -f'pom.xml' test"
-                }
-            }
+       
+       stage("Maven test") {
+      steps {
+        script {
+          sh "mvn -f'pom.xml' test -Drevision=${VERSION}"
         }
+      }
+    }
+      
     
     stage("Maven Sonarqube") {
             steps {
@@ -49,6 +60,7 @@ pipeline{
                 echo ":$BUILD_NUMBER"
             }
         }
+      
      stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
@@ -84,36 +96,61 @@ pipeline{
                 }
             }
      }
-       stage('Building our image') { 
-            steps { 
+   /*   stage('Building our image') { 
+      steps { 
+
                 script { 
+
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
                 }
+
             } 
+
         }
+
         stage('Deploy our image') { 
+
             steps { 
+
                 script { 
+
                     docker.withRegistry( '', registryCredential ) { 
+
                         dockerImage.push() 
+
                     }
+
                 } 
+
             }
+
         } 
+
         stage('Cleaning up') { 
+
             steps { 
+
                 sh "docker rmi $registry:$BUILD_NUMBER" 
+
             }
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+        } */
+      
+    stage('docker compose') {
+
+            steps {
+
+                sh "docker-compose up -d"
+
+            }
+    }
+
+   
+     
+      
+      
+      
+     
   }
 }
